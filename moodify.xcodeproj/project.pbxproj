@@ -35,16 +35,6 @@
 			path = moodify;
 			sourceTree = "<group>";
 		};
-		81092FB72DAD01450068CADB /* moodifyTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = moodifyTests;
-			sourceTree = "<group>";
-		};
-		81092FC12DAD01450068CADB /* moodifyUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = moodifyUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				81092FA82DAD01430068CADB /* moodify */,
-				81092FB72DAD01450068CADB /* moodifyTests */,
-				81092FC12DAD01450068CADB /* moodifyUITests */,
 				81092FA72DAD01430068CADB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,9 +118,6 @@
 			dependencies = (
 				81092FB62DAD01450068CADB /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				81092FB72DAD01450068CADB /* moodifyTests */,
-			);
 			name = moodifyTests;
 			packageProductDependencies = (
 			);
@@ -152,9 +137,6 @@
 			);
 			dependencies = (
 				81092FC02DAD01450068CADB /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				81092FC12DAD01450068CADB /* moodifyUITests */,
 			);
 			name = moodifyUITests;
 			packageProductDependencies = (
