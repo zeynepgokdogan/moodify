@@ -43,7 +43,10 @@ struct MoodInputView: View {
                 }
                 
             }
-            NavigationLink(destination: MoodSelectionView(), isActive: $navigate) {
+            NavigationLink(
+                destination: MoodSelectionView(),
+                isActive: $navigate
+            ) {
                 EmptyView()
             }
         }

@@ -15,13 +15,13 @@ struct CustomTextField: View {
         ZStack(alignment: .leading) {
             if text.isEmpty {
                 Text(placeholder)
-                    .font(.custom("AvenirNext-Regular", size: 22))
+                    .font(.custom("AvenirNext-Regular", size: 18))
                     .foregroundColor(.gray)
                     .padding(.horizontal, 50)
             }
             
             TextField("", text: $text)
-                .font(.custom("AvenirNext-Regular", size: 22))
+                .font(.custom("AvenirNext-Regular", size: 18))
                 .multilineTextAlignment(.leading)
                 .textInputAutocapitalization(.none)
                 .autocorrectionDisabled(true)

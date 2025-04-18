@@ -9,10 +9,18 @@ import SwiftUI
 
 @main
 struct moodifyApp: App {
+    @State private var isActive = false
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .preferredColorScheme(.dark)
+            if isActive {
+                ContentView()
+                    .preferredColorScheme(.dark)
+            } else{
+                SplashView(isActive: $isActive)
+                    .preferredColorScheme(.dark)
+                
+            }
         }
     }
 }
