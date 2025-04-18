@@ -13,7 +13,7 @@ struct MoodResultsView: View {
             MoodCard(playlistName: "sldöçmöçn", artistName: "xösç..çm.a")
         }
         .navigationBarTitle("Mood Results")
-    
+        
     }
 }
 

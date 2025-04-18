@@ -16,12 +16,18 @@ struct MoodButton: View {
             Text(label)
                 .font(.title2)
                 .padding()
-                .foregroundStyle(.black)
-
+                .frame(maxWidth: .infinity)
+                .foregroundColor(.black)
+                .background(
+                    RoundedRectangle(cornerRadius: 15)
+                        .stroke(Color.gray, lineWidth: 1)
+                        .background(RoundedRectangle(cornerRadius: 15).fill(Color.white))
+                )
+                .shadow(radius: 3)
         }
+        .buttonStyle(PlainButtonStyle())
     }
 }
-
 
 #Preview {
     MoodButton(label: "Mood") {
