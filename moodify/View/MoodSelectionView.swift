@@ -16,21 +16,19 @@ struct MoodSelectionView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Text("Mood Selection")
-                    .font(.system(size: 40, weight: .bold, design: .default))
+                Text("mood_selection_title".localized)
+                    .customStyle(CustomText.heading)
                     .padding(.bottom, 40)
-                
                 LazyVGrid(columns: columns, spacing: 25) {
-                    MoodButton(label:"🙂 Happy") {}
-                    MoodButton(label:"🙁 Sad") {}
-                    MoodButton(label:"😡 Angry") {}
-                    MoodButton(label:"😌 Calm") {}
-                    MoodButton(label:"🙂 Happy") {}
-                    MoodButton(label:"🥳 Excited") {}
-                    MoodButton(label:"❤️ Romantic") {}
-                    MoodButton(label:"💡 Inspired") {}
-                    MoodButton(label:"😔 Lonely") {}
-                    MoodButton(label:"💪 Motivation") {}
+                    MoodButton(label:"mood_happy".localized) {}
+                    MoodButton(label:"mood_sad".localized) {}
+                    MoodButton(label:"mood_angry".localized) {}
+                    MoodButton(label:"mood_calm".localized) {}
+                    MoodButton(label:"mood_excited".localized) {}
+                    MoodButton(label:"mood_romantic".localized) {}
+                    MoodButton(label:"mood_inspired".localized) {}
+                    MoodButton(label:"mood_lonely".localized) {}
+                    MoodButton(label:"mood_motivation".localized) {}
                 }
                 .padding(.horizontal, 20)
             }

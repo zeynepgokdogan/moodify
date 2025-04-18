@@ -12,9 +12,9 @@ struct MoodCard: View {
     let artistName: String
     
     var body: some View {
-        HStack
+        HStack(spacing: 20)
         {
-            Image("playlistImage")
+            Image("playlist_cover")
                 .resizable()
                 .frame(width: 100, height: 100)
                 .cornerRadius(20)
@@ -22,15 +22,17 @@ struct MoodCard: View {
             VStack(alignment: .leading, spacing: 10)
             {
                 Text(playlistName)
-                    .font(.headline)
+                    .customStyle(CustomText.caption)
                 Text(artistName)
-                    .font(.caption)
+                    .customStyle(CustomText.explanation)
             }
+            
+            Spacer()
         }
         .frame(width: 300)
         .padding()
-        .background(.white.opacity(0.8))
-        .cornerRadius(10)
+        .background(.blue.opacity(0.3))
+        .cornerRadius(15)
     }
 }
 

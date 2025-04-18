@@ -14,16 +14,14 @@ struct MoodButton: View {
     var body: some View {
         Button(action: action) {
             Text(label)
-                .font(.title2)
+                .customStyle(CustomText.subheading)
                 .padding()
                 .frame(maxWidth: .infinity)
-                .foregroundColor(.black)
                 .background(
                     RoundedRectangle(cornerRadius: 15)
-                        .stroke(Color.gray, lineWidth: 1)
-                        .background(RoundedRectangle(cornerRadius: 15).fill(Color.white))
+                        .stroke(Color.black, lineWidth: 1)
+                        .background(RoundedRectangle(cornerRadius: 15).fill(Color.white.opacity(0.15)))
                 )
-                .shadow(radius: 3)
         }
         .buttonStyle(PlainButtonStyle())
     }

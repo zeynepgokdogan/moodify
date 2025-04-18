@@ -10,9 +10,14 @@ import SwiftUI
 struct MoodResultsView: View {
     var body: some View {
         NavigationStack {
-            MoodCard(playlistName: "sldöçmöçn", artistName: "xösç..çm.a")
+            MoodCard(
+                playlistName: "playlist_name".localized,
+                artistName: "artist_name".localized
+            )
         }
-        .navigationBarTitle("Mood Results")
+        .navigationBarTitle(
+            "mood_result_view_title".localized
+        )
         
     }
 }

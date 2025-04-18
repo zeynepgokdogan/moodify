@@ -14,11 +14,10 @@ struct GenerateButton: View {
     var body: some View {
         Button (action: action){
             Text(label)
-                .padding(20)
-                .frame(width: 200)
-                .foregroundStyle(.white)
+                .customStyle(CustomText.subheading)
+                .padding()
                 .background(Color.AppPrimary.Pink)
-                .cornerRadius(12)
+                .cornerRadius(15)
         }
     }
 }
