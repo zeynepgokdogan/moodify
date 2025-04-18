@@ -30,7 +30,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		81092FA82DAD01430068CADB /* moodify */ = {
+		81C23E672DB27FE500EF132E /* moodify */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = moodify;
 			sourceTree = "<group>";
@@ -65,8 +65,8 @@
 		81092F9D2DAD01430068CADB = {
 			isa = PBXGroup;
 			children = (
-				81092FA82DAD01430068CADB /* moodify */,
 				81092FA72DAD01430068CADB /* Products */,
+				81C23E672DB27FE500EF132E /* moodify */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,7 +96,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				81092FA82DAD01430068CADB /* moodify */,
+				81C23E672DB27FE500EF132E /* moodify */,
 			);
 			name = moodify;
 			packageProductDependencies = (

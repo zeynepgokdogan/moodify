@@ -23,6 +23,7 @@ struct MoodInputView: View {
                 
                 Spacer()
                 Divider()
+                    .frame(height: 2)
                     .padding(.vertical, 16)
                 Text("manual_mood_selection_prompt".localized)
                     .customStyle(CustomText.subheading)

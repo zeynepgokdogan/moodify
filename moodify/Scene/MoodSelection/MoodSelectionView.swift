@@ -18,7 +18,7 @@ struct MoodSelectionView: View {
             VStack {
                 Text("mood_selection_title".localized)
                     .customStyle(CustomText.heading)
-                    .padding(.bottom, 40)
+                    .padding(.bottom, 100)
                 LazyVGrid(columns: columns, spacing: 25) {
                     MoodButton(label:"mood_happy".localized) {}
                     MoodButton(label:"mood_sad".localized) {}

@@ -9,13 +9,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Discover Music That Feels Like You"
+            "value" : "Discover Music That Feels Like You ✨"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sana Uyan Müzikleri Keşfet"
+            "state" : "needs_review",
+            "value" : "Sana Uyan Müzikleri Keşfet ✨"
           }
         }
       }
