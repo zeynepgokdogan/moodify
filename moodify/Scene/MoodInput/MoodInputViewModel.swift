@@ -7,13 +7,30 @@
 
 import Foundation
 
-struct MoodInputViewModel {
+@MainActor
+class MoodInputViewModel: ObservableObject {
     private let moodService = MoodService()
+    @Published var inputText = ""
+    @Published var mood = ""
     
-    func fetchMoods() -> [String] {
-        moodService.fetchMood(for: inputText) { sentiment in
-                           mood = sentiment
-                       }
-        return ["Happy", "Sad", "Angry", "Surprised", "Fearful"]
+    func fetchMoods() async -> [String] {
+        let sentiment = await moodService.fetchMood(text: inputText)
+        self.mood = sentiment
+        
+        return [
+            "happy",
+            "sad",
+            "angry",
+            "calm",
+            "excited",
+            "romantic",
+            "inspired",
+            "lonely",
+            "motivation"
+        ]
     }
+    
+    
+    
 }
+

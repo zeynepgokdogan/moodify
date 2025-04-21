@@ -7,8 +7,8 @@
 import SwiftUI
 
 struct MoodInputView: View {
+    @StateObject var viewModel = MoodInputViewModel()
     @State private var navigate = false
-    @State var text: String = ""
     
     var body: some View {
         NavigationStack {
@@ -18,8 +18,13 @@ struct MoodInputView: View {
                     .frame(width: 380, height: 300)
                 Text("discover_music_suggestion".localized)
                     .customStyle(CustomText.heading)
-                CustomTextField(placeholder: "mood_input_placeholder".localized , text: $text)
-                GenerateButton(label: "generate_playlist_button".localized) {}
+                CustomTextField(placeholder: "mood_input_placeholder".localized , text: $viewModel.inputText)
+                GenerateButton(
+                    label: "generate_playlist_button".localized
+                ) {  Task{
+                    await viewModel
+                        .fetchMoods()
+                }}
                 
                 Spacer()
                 Divider()
@@ -30,6 +35,7 @@ struct MoodInputView: View {
                 Button(
                     action: {
                         navigate = true
+                        
                     })
                 {
                     Label("mood_selection_navigation".localized, systemImage: "arrow.right.circle")

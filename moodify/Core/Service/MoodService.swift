@@ -8,50 +8,46 @@
 import Foundation
 
 class MoodService {
-    func fetchMood(for text: String, completion: @escaping (String) -> Void) {
-        guard let url = URL(string: "https://api.twinword.com/v6/sentiment-analysis") else {
-            completion("Geçersiz API URL")
-            return
+    func fetchMood(text: String) async -> String {
+        guard let url = URL(string: "https://language.googleapis.com/v1/documents:analyzeSentiment?key=AIzaSyD6Ht3nU8EOlByvd7zuZt0TwuTDk6GEs1c") else {
+            return "URL hatalı"
         }
-        
+
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.addValue("caf3f5db5amsh20de9b951831287p123015jsnc06b1a992010", forHTTPHeaderField: "X-Twaip-Key")
-        let body = [
-            "text": text
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let body: [String: Any] = [
+            "document": [
+                "type": "PLAIN_TEXT",
+                "language": "en",
+                "content": text
+            ],
+            "encodingType": "UTF8"
         ]
-        
+
         do {
-            let jsonData = try JSONSerialization.data(withJSONObject: body, options: [])
+            let jsonData = try JSONSerialization.data(withJSONObject: body)
             request.httpBody = jsonData
+
+            let (data, _) = try await URLSession.shared.data(for: request)
+
+            if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+               let sentiment = json["documentSentiment"] as? [String: Any],
+               let score = sentiment["score"] as? Double {
+                
+                print("Google Cloud Duygu Skoru: \(score)")
+                return score > 0.2 ? "pozitif" :
+                       score < -0.2 ? "negatif" : "nötr"
+            } else {
+                print("Yanıt işlenemedi")
+                return "Analiz yapılamadı"
+            }
         } catch {
-            print("JSON oluşturulurken hata")
-            completion("Hata oluştu")
-            return
+            print("Hata: \(error)")
+            return "İstek başarısız"
         }
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {
-                DispatchQueue.main.async {
-                    completion("Hata oluştu")
-                }
-                return
-            }
-            
-            do {
-                if let jsonResponse = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-                   let sentiment = jsonResponse["sentiment"] as? String {
-                    DispatchQueue.main.async {
-                        completion("Ruh Hali: \(sentiment)")
-                    }
-                }
-            } catch {
-                DispatchQueue.main.async {
-                    completion("Veri işlenemedi")
-                }
-            }
-        }
-        task.resume()
     }
+
 }
 
