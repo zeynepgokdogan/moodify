@@ -23,7 +23,6 @@ class MoodInputViewModel: ObservableObject {
             "angry",
             "calm",
             "excited",
-            "romantic",
             "inspired",
             "lonely",
             "motivation"

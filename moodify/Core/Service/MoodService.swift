@@ -37,8 +37,14 @@ class MoodService {
                let score = sentiment["score"] as? Double {
                 
                 print("Google Cloud Duygu Skoru: \(score)")
-                return score > 0.2 ? "pozitif" :
-                       score < -0.2 ? "negatif" : "nötr"
+                
+                let closestMood = moodScores.min(by: {
+                    abs($0.value - score) < abs($1.value - score)
+                })?.name ?? "bilinmiyor"
+                
+                print(closestMood)
+                return closestMood
+                
             } else {
                 print("Yanıt işlenemedi")
                 return "Analiz yapılamadı"
@@ -48,6 +54,5 @@ class MoodService {
             return "İstek başarısız"
         }
     }
-
 }
 
