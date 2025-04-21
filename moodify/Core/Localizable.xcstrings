@@ -59,13 +59,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "😡 Angry"
+            "value" : "Angry"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "😡 Kızgın"
+            "state" : "translated",
+            "value" : "Kızgın"
           }
         }
       }
@@ -76,13 +76,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "😌 Calm"
+            "value" : "Calm"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "😌 Sakin"
+            "state" : "translated",
+            "value" : "Sakin"
           }
         }
       }
@@ -93,13 +93,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "🥳 Excited"
+            "value" : "Excited"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "🥳 Heyecanlı"
+            "state" : "translated",
+            "value" : "Heyecanlı"
           }
         }
       }
@@ -110,13 +110,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "🙂 Happy"
+            "value" : "Happy"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "🙂 Mutlu"
+            "state" : "translated",
+            "value" : "Mutlu"
           }
         }
       }
@@ -144,13 +144,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "💡 Inspired"
+            "value" : "Inspired"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "💡 İlham Almış"
+            "state" : "translated",
+            "value" : "İlham Almış"
           }
         }
       }
@@ -161,13 +161,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "😔 Lonely"
+            "value" : "Lonely"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "😔 Yalnız"
+            "state" : "translated",
+            "value" : "Yalnız"
           }
         }
       }
@@ -178,13 +178,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "💪 Motivation"
+            "value" : "Motivation"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "💪 Motive"
+            "value" : "Motive"
           }
         }
       }
@@ -211,13 +211,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "❤️ Romantic"
+            "value" : "Romantic"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "❤️ Romantik"
+            "state" : "translated",
+            "value" : "Romantik"
           }
         }
       }
@@ -228,13 +228,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "🙁 Sad"
+            "value" : "Sad"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "🙁 Üzgün"
+            "state" : "translated",
+            "value" : "Üzgün"
           }
         }
       }

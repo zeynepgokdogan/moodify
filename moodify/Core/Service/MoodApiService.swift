@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MoodService {
+class MoodApiService {
     func fetchMood(text: String) async -> String {
         guard let url = URL(string: "https://language.googleapis.com/v1/documents:analyzeSentiment?key=AIzaSyD6Ht3nU8EOlByvd7zuZt0TwuTDk6GEs1c") else {
             return "URL hatalı"
@@ -36,23 +36,23 @@ class MoodService {
                let sentiment = json["documentSentiment"] as? [String: Any],
                let score = sentiment["score"] as? Double {
                 
-                print("Google Cloud Duygu Skoru: \(score)")
+                print("Google Cloud Score: \(score)")
                 
-                let closestMood = moodScores.min(by: {
+                let closestMood = moodModel.min(by: {
                     abs($0.value - score) < abs($1.value - score)
-                })?.name ?? "bilinmiyor"
+                })?.name ?? "Unknown"
                 
                 print(closestMood)
                 return closestMood
                 
             } else {
-                print("Yanıt işlenemedi")
-                return "Analiz yapılamadı"
+                return "Cannnot parse JSON"
             }
         } catch {
-            print("Hata: \(error)")
-            return "İstek başarısız"
+            print("Error: \(error)")
+            return "Request failed"
         }
     }
+    
 }
 

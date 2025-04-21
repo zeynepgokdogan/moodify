@@ -20,15 +20,13 @@ struct MoodSelectionView: View {
                     .customStyle(CustomText.heading)
                     .padding(.bottom, 100)
                 LazyVGrid(columns: columns, spacing: 25) {
-                    MoodButton(label:"mood_happy".localized) {}
-                    MoodButton(label:"mood_sad".localized) {}
-                    MoodButton(label:"mood_angry".localized) {}
-                    MoodButton(label:"mood_calm".localized) {}
-                    MoodButton(label:"mood_excited".localized) {}
-                    MoodButton(label:"mood_romantic".localized) {}
-                    MoodButton(label:"mood_inspired".localized) {}
-                    MoodButton(label:"mood_lonely".localized) {}
-                    MoodButton(label:"mood_motivation".localized) {}
+                    ForEach(moodModel, id: \.name) { mood in
+                        MoodButton(
+                            label: "\(mood.emoji)" + "mood_\(mood.name)".localized
+                        ) {
+                            
+                        }
+                    }
                 }
                 .padding(.horizontal, 20)
             }

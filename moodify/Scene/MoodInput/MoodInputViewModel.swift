@@ -9,7 +9,7 @@ import Foundation
 
 @MainActor
 class MoodInputViewModel: ObservableObject {
-    private let moodService = MoodService()
+    private let moodService = MoodApiService()
     @Published var inputText = ""
     @Published var mood = ""
     
@@ -28,8 +28,6 @@ class MoodInputViewModel: ObservableObject {
             "motivation"
         ]
     }
-    
-    
     
 }
 
