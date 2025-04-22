@@ -8,7 +8,7 @@
 import Foundation
 
 class MoodResultViewModel: ObservableObject {
-    func searchPlaylist(keyword: String, token: String, completion: @escaping ([Spoti@fyPlaylist]) -> Void) {
+    func searchPlaylist(keyword: String, token: String, completion: @escaping ([SpotifyPlaylist]) -> Void) {
         let query = keyword.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         let urlString = "https://api.spotify.com/v1/search?q=\(query)&type=playlist&limit=1"
         var request = URLRequest(url: URL(string: urlString)!)
