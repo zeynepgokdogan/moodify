@@ -20,6 +20,23 @@
         }
       }
     },
+    "error_message_empty_text" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please enter all fields"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Lütfen tüm alanları doldurun"
+          }
+        }
+      }
+    },
     "generate_playlist_button" : {
       "extractionState" : "manual",
       "localizations" : {

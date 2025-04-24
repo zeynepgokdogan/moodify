@@ -7,8 +7,8 @@
 
 import Foundation
 
-class MoodApiService {
-    func fetchMood(text: String) async -> String {
+class TextAnalysisService {
+    func detectMood(text: String) async -> String {
         guard let url = URL(string: "https://language.googleapis.com/v1/documents:analyzeSentiment?key=AIzaSyD6Ht3nU8EOlByvd7zuZt0TwuTDk6GEs1c") else {
             return "URL hatalı"
         }

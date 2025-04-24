@@ -8,7 +8,7 @@
 import Foundation
 
 class SpotifyService {
-    func getAccessToken(clientId: String, clientSecret: String, completion: @escaping (String?) -> Void) {
+    func getAccessToken(completion: @escaping (String?) -> Void) {
         let url = URL(string: "https://accounts.spotify.com/api/token")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"

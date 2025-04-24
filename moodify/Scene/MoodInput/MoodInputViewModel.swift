@@ -9,25 +9,26 @@ import Foundation
 
 @MainActor
 class MoodInputViewModel: ObservableObject {
-    private let moodService = MoodApiService()
+    private let textAnalysisService = TextAnalysisService()
     @Published var inputText = ""
-    @Published var mood = ""
+    @Published var mood: String = ""
+    @Published var errorMessage = ""
     
-    func fetchMoods() async -> [String] {
-        let sentiment = await moodService.fetchMood(text: inputText)
-        self.mood = sentiment
-        
-        return [
-            "happy",
-            "sad",
-            "angry",
-            "calm",
-            "excited",
-            "inspired",
-            "lonely",
-            "motivation"
-        ]
+    func detectMood() async -> String {
+        guard validate() else{
+            return ""
+        }
+        let detectedMood = await textAnalysisService.detectMood(text: inputText)
+        self.mood = detectedMood
+        return mood
+    }
+    
+    func validate() -> Bool {
+        guard !inputText.isEmpty else {
+            errorMessage = "error_message_empty_text".localized
+            return false
+        }
+        return true
     }
     
 }
-

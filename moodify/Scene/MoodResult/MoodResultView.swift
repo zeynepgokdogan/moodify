@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MoodResultView: View {
+    @StateObject var viewModel: MoodResultViewModel
+    
     var body: some View {
         NavigationStack {
             MoodCard(
@@ -18,10 +20,11 @@ struct MoodResultView: View {
         .navigationBarTitle(
             "mood_result_view_title".localized
         )
-        
+        .tint(Color.AppPrimary.Pink)
     }
+    
 }
 
 #Preview {
-    MoodResultView()
+    MoodResultView(viewModel: MoodResultViewModel(mood: "test"))
 }

@@ -8,6 +8,7 @@ import SwiftUI
 
 struct MoodInputView: View {
     @StateObject var viewModel = MoodInputViewModel()
+    @State private var showResult = false
     @State private var navigate = false
     
     var body: some View {
@@ -19,11 +20,20 @@ struct MoodInputView: View {
                 Text("discover_music_suggestion".localized)
                     .customStyle(CustomText.heading)
                 CustomTextField(placeholder: "mood_input_placeholder".localized , text: $viewModel.inputText)
+                if !viewModel.errorMessage.isEmpty {
+                    Text(viewModel.errorMessage)
+                        .foregroundColor(.red)
+                        .customStyle(CustomText.subheading)
+                        .padding(.bottom, 10)
+                }
+                
                 GenerateButton(
                     label: "generate_playlist_button".localized
                 ) {  Task{
-                    await viewModel
-                        .fetchMoods()
+                    let mood = await viewModel.detectMood()
+                    if !mood.isEmpty {
+                        showResult = true
+                    }
                 }}
                 
                 Spacer()
@@ -35,7 +45,6 @@ struct MoodInputView: View {
                 Button(
                     action: {
                         navigate = true
-                        
                     })
                 {
                     Label("mood_selection_navigation".localized, systemImage: "arrow.right.circle")
@@ -56,7 +65,15 @@ struct MoodInputView: View {
             ) {
                 EmptyView()
             }
+            NavigationLink(
+                destination: MoodResultView(viewModel: MoodResultViewModel(mood: viewModel.mood)),
+                isActive: $showResult
+            ) {
+                EmptyView()
+            }
+            
         }
+        .tint(Color.AppPrimary.Pink)
     }
 }
 
