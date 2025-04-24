@@ -12,18 +12,24 @@ struct MoodResultView: View {
     
     var body: some View {
         NavigationStack {
-            MoodCard(
-                playlistName: "playlist_name".localized,
-                artistName: "artist_name".localized
-            )
+            if viewModel.playlists.isEmpty {
+                Text("Playlist bulunamadı veya veriler yüklenemedi.")
+                    .foregroundColor(.gray)
+                    .padding()
+            } else {
+                List(viewModel.playlists, id: \.uri) { playlist in
+                    Text(playlist.name)
+                }
+            }
         }
-        .navigationBarTitle(
-            "mood_result_view_title".localized
-        )
+        .onAppear {
+            viewModel.fetchPlaylist()
+        }
+        .navigationBarTitle("mood_result_view_title".localized)
         .tint(Color.AppPrimary.Pink)
     }
-    
 }
+
 
 #Preview {
     MoodResultView(viewModel: MoodResultViewModel(mood: "test"))

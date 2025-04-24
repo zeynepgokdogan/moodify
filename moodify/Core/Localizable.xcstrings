@@ -211,13 +211,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Result"
+            "value" : "Playlist For You"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sonuçlar"
+            "value" : "Senin için çalma listeleri"
           }
         }
       }
@@ -287,6 +287,9 @@
           }
         }
       }
+    },
+    "Playlist bulunamadı veya veriler yüklenemedi." : {
+
     }
   },
   "version" : "1.0"

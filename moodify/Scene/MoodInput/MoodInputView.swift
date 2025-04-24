@@ -59,6 +59,9 @@ struct MoodInputView: View {
                 }
                 
             }
+            .onAppear{
+                viewModel.reset()
+            }
             NavigationLink(
                 destination: MoodSelectionView(),
                 isActive: $navigate

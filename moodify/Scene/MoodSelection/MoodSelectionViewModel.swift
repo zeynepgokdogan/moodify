@@ -13,7 +13,6 @@ class MoodSelectionViewModel: ObservableObject {
     @Published var mood: String = ""
     
     func selectMood(string: String) async -> String {
-        
         return mood
     }
     

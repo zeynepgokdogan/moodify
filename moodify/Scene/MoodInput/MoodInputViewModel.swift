@@ -31,4 +31,10 @@ class MoodInputViewModel: ObservableObject {
         return true
     }
     
+    func reset() {
+        inputText = ""
+        errorMessage = ""
+        mood = ""
+    }
+    
 }

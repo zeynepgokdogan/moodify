@@ -4,10 +4,10 @@
 //
 //  Created by Zeynep Gökdoğan on 21.04.2025.
 //
-
 import Foundation
 
 class SpotifyService {
+    
     func getAccessToken(completion: @escaping (String?) -> Void) {
         let url = URL(string: "https://accounts.spotify.com/api/token")!
         var request = URLRequest(url: url)
@@ -31,11 +31,47 @@ class SpotifyService {
             }
         }.resume()
     }
-
+    
+    func fetchPlaylist(for mood: String, accessToken: String, completion: @escaping ([Playlist]) -> Void) {
+        let urlString = "https://api.spotify.com/v1/search?q=\(mood.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")&type=playlist"
+        guard let url = URL(string: urlString) else { return }
+        
+        var request = URLRequest(url: url)
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Hata: \(error.localizedDescription)")
+                completion([])
+                return
+            }
+            
+            guard let data = data else {
+                print("Veri alınamadı.")
+                completion([])
+                return
+            }
+        }.resume()
+    }
+    
+    
+    
     struct AccessTokenResponse: Decodable {
         let access_token: String
         let token_type: String
         let expires_in: Int
     }
-
+    
+    struct SearchResponse: Decodable {
+        let playlists: PlaylistContainer
+    }
+    
+    struct PlaylistContainer: Decodable {
+        let items: [Playlist]
+    }
+    
+    struct Playlist: Decodable {
+        let name: String
+        let uri: String
+    }
 }
