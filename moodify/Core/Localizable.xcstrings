@@ -290,6 +290,9 @@
     },
     "Playlist bulunamadı veya veriler yüklenemedi." : {
 
+    },
+    "Yükleniyor..." : {
+
     }
   },
   "version" : "1.0"

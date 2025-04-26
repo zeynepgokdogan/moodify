@@ -4,6 +4,7 @@
 //
 //  Created by Zeynep Gökdoğan on 21.04.2025.
 //
+
 import Foundation
 
 class SpotifyService {
@@ -22,9 +23,18 @@ class SpotifyService {
         let bodyString = "grant_type=client_credentials"
         request.httpBody = bodyString.data(using: .utf8)
         
-        URLSession.shared.dataTask(with: request) { data, _, _ in
-            if let data = data,
-               let result = try? JSONDecoder().decode(AccessTokenResponse.self, from: data) {
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if error != nil {
+                completion(nil)
+                return
+            }
+            
+            guard let data = data else {
+                completion(nil)
+                return
+            }
+            
+            if let result = try? JSONDecoder().decode(AccessTokenResponse.self, from: data) {
                 completion(result.access_token)
             } else {
                 completion(nil)
@@ -41,25 +51,26 @@ class SpotifyService {
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
-                print("Hata: \(error.localizedDescription)")
                 completion([])
                 return
             }
             
             guard let data = data else {
-                print("Veri alınamadı.")
                 completion([])
                 return
             }
+            
+            do {
+                let searchResponse = try JSONDecoder().decode(SearchResponse.self, from: data)
+                let playlists = searchResponse.playlists.items.compactMap { $0 }
+                
+                DispatchQueue.main.async {
+                    completion(playlists)
+                }
+            } catch {
+                completion([])
+            }
         }.resume()
-    }
-    
-    
-    
-    struct AccessTokenResponse: Decodable {
-        let access_token: String
-        let token_type: String
-        let expires_in: Int
     }
     
     struct SearchResponse: Decodable {
@@ -67,11 +78,18 @@ class SpotifyService {
     }
     
     struct PlaylistContainer: Decodable {
-        let items: [Playlist]
+        let items: [Playlist?]
     }
     
-    struct Playlist: Decodable {
+    struct Playlist: Identifiable, Decodable {
+        let id = UUID()
         let name: String
         let uri: String
+    }
+    
+    struct AccessTokenResponse: Decodable {
+        let access_token: String
+        let token_type: String
+        let expires_in: Int
     }
 }
