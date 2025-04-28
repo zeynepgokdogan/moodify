@@ -50,7 +50,7 @@ class SpotifyService {
         request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
         URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
+            if error != nil {
                 completion([])
                 return
             }
@@ -82,11 +82,17 @@ class SpotifyService {
     }
     
     struct Playlist: Identifiable, Decodable {
-        let id = UUID()
+        let id: String
         let name: String
         let uri: String
+
+        private enum CodingKeys: String, CodingKey {
+            case id
+            case name
+            case uri
+        }
     }
-    
+
     struct AccessTokenResponse: Decodable {
         let access_token: String
         let token_type: String
