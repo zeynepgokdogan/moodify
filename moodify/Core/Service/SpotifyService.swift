@@ -10,11 +10,19 @@ import Foundation
 class SpotifyService {
     
     func getAccessToken(completion: @escaping (String?) -> Void) {
+        guard
+            let clientID = Bundle.main.infoDictionary?["SPOTIFY_CLIENT_ID"] as? String,
+            let clientSecret = Bundle.main.infoDictionary?["SPOTIFY_CLIENT_SECRET"] as? String
+        else {
+            completion(nil)
+            return
+        }
+        
         let url = URL(string: "https://accounts.spotify.com/api/token")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
-        let credentials = "\("6121fcac2d83487d840272805fa41182"):\("65fcc61079f84046b1681cc2e980872f")"
+        let credentials = "\(clientID):\(clientSecret)"
         let encoded = Data(credentials.utf8).base64EncodedString()
         
         request.addValue("Basic \(encoded)", forHTTPHeaderField: "Authorization")
@@ -41,6 +49,7 @@ class SpotifyService {
             }
         }.resume()
     }
+
     
     func fetchPlaylist(for mood: String, accessToken: String, completion: @escaping ([Playlist]) -> Void) {
         let urlString = "https://api.spotify.com/v1/search?q=\(mood.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")&type=playlist"

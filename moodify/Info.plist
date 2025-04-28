@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>your-app-callback-url-scheme</string>
+            </array>
+        </dict>
+    </array>
+    <key>SPOTIFY_CLIENT_ID</key>
+    <string>6121fcac2d83487d840272805fa41182</string>
+    <key>SPOTIFY_CLIENT_SECRET</key>
+    <string>65fcc61079f84046b1681cc2e980872f</string>
+</dict>
+</plist>
