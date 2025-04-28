@@ -49,8 +49,8 @@ struct PlaylistCard: View {
             .padding()
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(Color(.systemBackground))
-                    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+                    .fill(Color(UIColor.systemBackground))
+                    .shadow(color: Color.primary.opacity(0.3), radius: 5, x: 0, y: 2)
             )
         }
         .buttonStyle(PlainButtonStyle())
