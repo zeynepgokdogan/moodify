@@ -13,7 +13,11 @@ struct MoodResultView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                if viewModel.playlists.isEmpty {
+                if viewModel.isLoading {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .scaleEffect(2)
+                } else if viewModel.playlists.isEmpty {
                     VStack {
                         Image(systemName: "music.note.list")
                             .playlistImageStyle()
@@ -39,9 +43,8 @@ struct MoodResultView: View {
             viewModel.fetchPlaylist()
         }
     }
-    
-    
 }
+
 
 #Preview {
     MoodResultView(viewModel: MoodResultViewModel(mood: "dolu kadehi ters tut"))

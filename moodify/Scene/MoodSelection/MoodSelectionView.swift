@@ -28,6 +28,7 @@ struct MoodSelectionView: View {
                             label: "\(mood.emoji)" + "mood_\(mood.name)".localized
                         ) {
                             Task{
+                                viewModel.mood = mood.name
                                 showResult = true
                             }
                         }
