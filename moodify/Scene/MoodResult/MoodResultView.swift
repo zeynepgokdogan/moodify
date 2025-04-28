@@ -12,25 +12,38 @@ struct MoodResultView: View {
     
     var body: some View {
         NavigationStack {
-            if viewModel.playlists.isEmpty {
-                Text("Playlist bulunamadı veya veriler yüklenemedi.")
-                    .foregroundColor(.gray)
-                    .padding()
-            } else {
-                List(viewModel.playlists, id: \.uri) { playlist in
-                    Text(playlist.name)
+            ZStack {
+                if viewModel.playlists.isEmpty {
+                    VStack {
+                        Image(systemName: "music.note.list")
+                            .playlistImageStyle()
+                        Text("playlist_not_found".localized)
+                            .foregroundColor(.gray)
+                            .padding()
+                    }
+                } else {
+                    List(viewModel.playlists, id: \.uri) { playlist in
+                        PlaylistCard(playlist: playlist) {
+                            viewModel.openSpotify(for: playlist.uri)
+                        }
+                        .listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
+                    }
+                    .listStyle(.plain)
                 }
             }
+            .navigationTitle("mood_result_view_title".localized)
+            .tint(Color.AppPrimary.Pink)
         }
         .onAppear {
             viewModel.fetchPlaylist()
         }
-        .navigationBarTitle("mood_result_view_title".localized)
-        .tint(Color.AppPrimary.Pink)
     }
+    
+    
 }
-
 
 #Preview {
-    MoodResultView(viewModel: MoodResultViewModel(mood: "test"))
+    MoodResultView(viewModel: MoodResultViewModel(mood: "dolu kadehi ters tut"))
 }
+

@@ -288,8 +288,39 @@
         }
       }
     },
+    "open_spotify" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Spotify"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Spotify'da aç"
+          }
+        }
+      }
+    },
     "Playlist bulunamadı veya veriler yüklenemedi." : {
-
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Playlist not found or data could not be loaded."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Playlist bulunamadı veya veriler yüklenemedi."
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

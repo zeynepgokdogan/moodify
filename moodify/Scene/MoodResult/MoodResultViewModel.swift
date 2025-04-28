@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class MoodResultViewModel: ObservableObject {
     @Published var mood: String
@@ -21,7 +22,7 @@ class MoodResultViewModel: ObservableObject {
     func fetchPlaylist() {
         spotifyService.getAccessToken { [weak self] token in
             guard let token = token else {
-                print("Erişim token'ı alınamadı")
+                print("Erişim token'ı alınamadı.")
                 return
             }
             self?.spotifyService.fetchPlaylist(for: self?.mood ?? "", accessToken: token) { playlists in
@@ -33,5 +34,23 @@ class MoodResultViewModel: ObservableObject {
         }
     }
     
+    func openSpotify(
+        for uri: String
+    ) {
+        let urlString = uri.replacingOccurrences(
+            of: "spotify:playlist:",
+            with: "https://open.spotify.com/playlist/"
+        )
+        if let url = URL(
+            string: urlString
+        ) {
+            UIApplication.shared
+                .open(
+                    url
+                )
+        }
+    }
+    
 }
+
 

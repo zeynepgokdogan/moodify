@@ -94,13 +94,13 @@ class SpotifyService {
         let id: String
         let name: String
         let uri: String
+        let images: [SpotifyImage]?
 
-        private enum CodingKeys: String, CodingKey {
-            case id
-            case name
-            case uri
+        struct SpotifyImage: Decodable {
+            let url: String
         }
     }
+
 
     struct AccessTokenResponse: Decodable {
         let access_token: String
