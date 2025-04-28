@@ -23,18 +23,21 @@ struct PlaylistCard: View {
                         case .success(let image):
                             image
                                 .playlistImageStyle()
+                        case .failure(_):
+                            Image("default_playlist_image")
+                                .playlistImageStyle()
                         @unknown default:
                             EmptyView()
                         }
                     }
                 } else {
-                    Image("playlist")
+                    Image("default_playlist_image")
                         .playlistImageStyle()
                 }
                 
                 VStack(alignment: .leading, spacing: 6) {
                     Text(playlist.name)
-                        .customStyle(CustomText.caption)
+                        .customStyle(CustomText.subheading)
                     
                     Text("open_spotify")
                         .customStyle(CustomText.explanation)

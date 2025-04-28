@@ -305,8 +305,8 @@
         }
       }
     },
-    "Playlist bulunamadı veya veriler yüklenemedi." : {
-      "extractionState" : "stale",
+    "playlist_not_found" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {

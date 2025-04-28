@@ -14,5 +14,6 @@ extension Image {
             .scaledToFit()
             .frame(width: 60, height: 60)
             .foregroundColor(.gray)
+            .cornerRadius(10)
     }
 }

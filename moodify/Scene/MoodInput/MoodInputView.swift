@@ -17,9 +17,12 @@ struct MoodInputView: View {
                 Image("logo")
                     .resizable()
                     .frame(width: 380, height: 300)
+                
                 Text("discover_music_suggestion".localized)
+                
                     .customStyle(CustomText.heading)
                 CustomTextField(placeholder: "mood_input_placeholder".localized , text: $viewModel.inputText)
+                
                 if !viewModel.errorMessage.isEmpty {
                     Text(viewModel.errorMessage)
                         .foregroundColor(.red)
@@ -40,8 +43,10 @@ struct MoodInputView: View {
                 Divider()
                     .frame(height: 2)
                     .padding(.vertical, 16)
+                
                 Text("manual_mood_selection_prompt".localized)
                     .customStyle(CustomText.subheading)
+                
                 Button(
                     action: {
                         navigate = true

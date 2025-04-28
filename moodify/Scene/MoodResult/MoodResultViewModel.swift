@@ -22,11 +22,11 @@ class MoodResultViewModel: ObservableObject {
     func fetchPlaylist() {
         spotifyService.getAccessToken { [weak self] token in
             guard let token = token else {
-                print("Erişim token'ı alınamadı.")
+                print("The access token was not received.")
                 return
             }
             self?.spotifyService.fetchPlaylist(for: self?.mood ?? "", accessToken: token) { playlists in
-                print("Alınan playlistler: \(playlists)")
+                print("Received playlists: \(playlists)")
                 DispatchQueue.main.async {
                     self?.playlists = playlists
                 }
